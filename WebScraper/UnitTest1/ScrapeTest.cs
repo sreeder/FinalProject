@@ -2,9 +2,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
-using WebScraper;
+using Scraper;
 
-namespace UnitTest1
+namespace UnitTest
 {
    
     [TestClass]
@@ -59,8 +59,8 @@ namespace UnitTest1
         [TestMethod]
         public void FindZelda()
         {
-            Mock<Item> mock = new Mock<Item>();
-            Mock.Setup(m => m.item).Returns(
+            Mock<Product> mock = new Mock<Product>();
+            mock.Setup(m => m).Returns(
                Products[0]);
 
                 

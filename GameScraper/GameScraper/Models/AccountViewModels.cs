@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace GameScraper.Models
+namespace WebUI.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

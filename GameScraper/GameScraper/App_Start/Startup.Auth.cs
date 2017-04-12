@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using GameScraper.Models;
+using WebUI.Models;
 
-namespace GameScraper
+namespace WebUI
 {
     public partial class Startup
     {
