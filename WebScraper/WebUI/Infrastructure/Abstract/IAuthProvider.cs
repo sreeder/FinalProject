@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Abstract
+namespace WebUI.Infrastructure.Abstract
 {
-    class iWebScraper
+    public interface IAuthProvider
     {
+        bool Authenticate(string username, string password);
     }
 }

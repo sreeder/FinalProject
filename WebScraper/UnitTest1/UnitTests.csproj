@@ -119,13 +119,9 @@
       <Project>{ae08964a-f4d5-4117-b1cf-0b77864fa9bd}</Project>
       <Name>WebUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{6031ffc6-e280-498b-9363-cbc1dcce3814}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebScraper\Scraper.csproj">
       <Project>{7c30597c-4687-4ee0-8fcc-ee71d8837eba}</Project>
-      <Name>WebScraper</Name>
+      <Name>Scraper</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
