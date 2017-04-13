@@ -53,17 +53,27 @@ namespace UnitTest
 
 
         [TestMethod]
-        public void TestMethod1()
+        public void generateURL()
         {
+            string upc = Products[0].UPC;
+            PCWebScraper pc = new PCWebScraper();
+            string url=pc.GetURL(upc);
+            
+            Assert.AreEqual(url, "https://www.pricecharting.com/search-products?q=045496870041&type=videogames&go=Go");
+            
+
         }
         [TestMethod]
+
         public void FindZelda()
         {
-            Mock<Product> mock = new Mock<Product>();
-            mock.Setup(m => m).Returns(
-               Products[0]);
+            //Mock<Product> mock = new Mock<Product>();
+            //mock.Setup(m => m).Returns(
+            //   Products[0]);
+            Product p = Products[0];
 
-                
+            PCWebScraper pc = new PCWebScraper();
+            Dictionary<string, decimal> answer = pc.GetPrices(p);
         }
     }
 }
