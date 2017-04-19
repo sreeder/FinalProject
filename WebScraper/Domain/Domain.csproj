@@ -99,7 +99,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EFDbGames.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Platform.cs">
