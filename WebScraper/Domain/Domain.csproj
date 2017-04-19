@@ -83,7 +83,6 @@
     <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFProductRepository.cs" />
-    <Compile Include="Concrete\EFOrderProcessor.cs" />
     <Compile Include="EFDbGames.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,7 +99,6 @@
       <DependentUpon>EFDbGames.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Product.cs" />
-    <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Platform.cs">
       <DependentUpon>EFDbGames.tt</DependentUpon>
     </Compile>
