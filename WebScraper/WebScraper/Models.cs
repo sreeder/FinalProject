@@ -13,7 +13,6 @@ namespace Scraper
         public string TitleSearch { get; set; }
         public string Description { get; set; }
         public string UPC { get; set; }
-        public int Age { get; set; }
 
         public int PlatformID { get; set; }
         public Platform Platform { get; set; }

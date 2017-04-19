@@ -25,7 +25,7 @@ namespace UnitTest
                 Title = "Legend of Zelda:Ocarina of Time",
                 TitleSearch = "LegendofZeldaOcarinaofTime",
                 UPC = "045496870041",
-                Age = 6,
+                
                 PlatformID = 1,
                 Platform = Platforms[1],
                 Price = new Price
@@ -40,7 +40,7 @@ namespace UnitTest
                 Title = "Assassin's Creed 3",
                 TitleSearch = "AssassinsCreed3",
                 UPC = "008888187233",
-                Age = 1,
+                
                 PlatformID = 4,
                 Platform = Platforms[4],
                 Price = new Price
