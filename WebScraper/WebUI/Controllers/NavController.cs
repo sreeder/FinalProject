@@ -19,7 +19,7 @@ namespace WebUI.Controllers
         {
             ViewBag.SelectedCategory = category;
             IEnumerable<string> categories=repository.Products
-                                                .Select(x=>x.Category)
+                                                .Select(x=>x.Platform.Name)
                                                 .Distinct()
                                                 .OrderBy(x=>x);
             return PartialView(categories);

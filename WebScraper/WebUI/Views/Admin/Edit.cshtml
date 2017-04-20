@@ -1,14 +1,14 @@
 ﻿
 @model Domain.Entities.Product
 @{
-    ViewBag.Title = "Admin: Edit " + @Model.Name;
+    ViewBag.Title = "Admin: Edit " + @Model.Title;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     HtmlHelper.ClientValidationEnabled = false;
     HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
 }
 <div class="panel">
     <div class="panel-heading">
-        <h3>Edit @Model.Name</h3>
+        <h3>Edit @Model.Title</h3>
     </div>
     @using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {

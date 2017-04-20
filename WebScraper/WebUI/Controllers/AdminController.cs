@@ -43,7 +43,7 @@ namespace WebUI.Controllers
 
                 repository.SaveProduct(product);
                 TempData["message"] = string.Format("{0} has been saved",
-                product.Name);
+                product.Title);
                 return RedirectToAction("Index");
             }
             else
@@ -59,7 +59,7 @@ namespace WebUI.Controllers
             if (deletedProduct != null)
             {
                 TempData["message"] = string.Format("{0} was deleted",
-                deletedProduct.Name);
+                deletedProduct.Title);
             }
             return RedirectToAction("Index");
         }

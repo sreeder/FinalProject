@@ -38,14 +38,7 @@ namespace WebUI.Infrastructure
             //put bindings here
             
             kernel.Bind<IProductRepository>().To<EFProductRepository>();
-
-            EmailSettings emailSettings = new EmailSettings
-            {
-                WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false"),
-                MailToAddress = Environment.Email
-            };
-            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
-            .WithConstructorArgument("settings", emailSettings);
+            
 
             kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
         }

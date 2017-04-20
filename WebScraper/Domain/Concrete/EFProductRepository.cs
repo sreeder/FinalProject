@@ -29,10 +29,10 @@ namespace Domain.Concrete
                 context.Products.Find(product.ProductID);
                 if (dbEntry != null)
                 {
-                    dbEntry.Name = product.Name;
+                    dbEntry.Title = product.Title;
                     dbEntry.Description = product.Description;
                     dbEntry.Price = product.Price;
-                    dbEntry.Category = product.Category;
+                    dbEntry.Platform = product.Platform;
                     dbEntry.ImageData = product.ImageData;
                     dbEntry.ImageMimeType = product.ImageMimeType;
                 }

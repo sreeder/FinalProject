@@ -79,59 +79,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IOrderProcessor.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFProductRepository.cs" />
-    <Compile Include="EFDbGames.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EFDbGames.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFDbGames.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EFDbGames.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFDbGames.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EFDbGames.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\Price.cs" />
+    <Compile Include="Entities\Platform.cs" />
     <Compile Include="Entities\Product.cs" />
-    <Compile Include="Platform.cs">
-      <DependentUpon>EFDbGames.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Price.cs">
-      <DependentUpon>EFDbGames.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Product.cs">
-      <DependentUpon>EFDbGames.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="EFDbGames.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EFDbGames.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="EFDbGames.edmx.diagram">
-      <DependentUpon>EFDbGames.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="EFDbGames.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EFDbGames.edmx</DependentUpon>
-      <LastGenOutput>EFDbGames.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EFDbGames.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EFDbGames.edmx</DependentUpon>
-      <LastGenOutput>EFDbGames.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
