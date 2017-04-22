@@ -25,6 +25,7 @@ namespace Scraper
                 var root = doc.DocumentNode;
 
                 var a_nodes = root.Descendants("a").ToList();
+                var table = root.Descendants("table").ToList();
                 var div_nodes = root.SelectNodes("//*[contains(@class,'price')]");
 
                 foreach (var a_node in a_nodes)

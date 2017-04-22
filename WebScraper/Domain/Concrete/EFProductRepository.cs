@@ -17,16 +17,19 @@ namespace Domain.Concrete
         {
             get { return context.Products; }
         }
-        public void SaveProduct(Product product)
+
+        public void SaveProduct(Product product, Price price)
         {
             if (product.ProductID == 0)
             {
                 context.Products.Add(product);
+                context.Prices.Add(price);
+
             }
             else
             {
                 Product dbEntry =
-                context.Products.Find(product.ProductID);
+                    context.Products.Find(product.ProductID);
                 if (dbEntry != null)
                 {
                     dbEntry.Title = product.Title;
@@ -35,16 +38,31 @@ namespace Domain.Concrete
                     dbEntry.Platform = product.Platform;
                     dbEntry.ImageData = product.ImageData;
                     dbEntry.ImageMimeType = product.ImageMimeType;
+
                 }
+                Price dbPrice = context.Prices.Find(product.ProductID);
+                if (dbPrice != null)
+                {
+                    dbPrice.PriceUsed = price.PriceUsed;
+                    dbPrice.PriceNew = price.PriceNew;
+                }
+
             }
             context.SaveChanges();
         }
+
         public Product DeleteProduct(int productID)
         {
             Product dbEntry = context.Products.Find(productID);
             if (dbEntry != null)
             {
                 context.Products.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            Price dbPrice = context.Prices.Find(productID);
+            if (dbPrice != null)
+            {
+                context.Prices.Remove(dbPrice);
                 context.SaveChanges();
             }
             return dbEntry;

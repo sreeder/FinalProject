@@ -7,7 +7,7 @@ namespace Domain.Abstract
     {
         IEnumerable<Product> Products { get; }
 
-        void SaveProduct(Product product);
+        void SaveProduct(Product product, Price price);
 
         Product DeleteProduct(int productID);
     }

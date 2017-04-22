@@ -2,7 +2,7 @@
 using WebUI.Infrastructure.Abstract;
 
 
-namespace SportsStore.WebUI.Infrastructure.Concrete
+namespace WebUI.Infrastructure.Concrete
 {
     public class FormsAuthProvider : IAuthProvider
     {
