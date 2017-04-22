@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
 using Scraper;
+using Domain.Entities;
 
 namespace UnitTest
 {

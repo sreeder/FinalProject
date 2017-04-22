@@ -11,12 +11,15 @@ namespace Domain.Entities
     public class Platform
     {
         [HiddenInput(DisplayValue = false)]
+        [Key]
         public int PlatformID { get; set; }
         [Required(ErrorMessage = "Please enter a product name")]
         public string Name { get; set; }
 
         public string Abbreviation { get; set; }
-       
+        public virtual ICollection<Product> Products { get; set; }
+
+
 
     }
 }

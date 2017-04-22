@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations.Model;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +35,10 @@ namespace Domain.Concrete
                 {
                     dbEntry.Title = product.Title;
                     dbEntry.Description = product.Description;
-                    dbEntry.Price = product.Price;
-                    dbEntry.Platform = product.Platform;
+                    dbEntry.UPC = product.UPC;
+                    dbEntry.PlatformID = product.PlatformID;
+                    //dbEntry.Price = product.Price;
+                    //dbEntry.Platform = product.Platform;
                     dbEntry.ImageData = product.ImageData;
                     dbEntry.ImageMimeType = product.ImageMimeType;
 

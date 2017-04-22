@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HAP = HtmlAgilityPack;
 //using Scraper.Abstract;
+using Domain.Entities;
 
 namespace Scraper
 {
