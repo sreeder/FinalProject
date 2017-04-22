@@ -45,7 +45,7 @@ namespace WebUI.HtmlHelpers
             {
                 TagBuilder h2 = new TagBuilder("h2");
                 TagBuilder p = new TagBuilder("p");
-                h2.InnerHtml = product.Title + " (" + product.PriceUsed.ToString("c") +")";
+                h2.InnerHtml = product.Title + " (" + product.Price.PriceUsed.ToString("c") +")";
                 p.InnerHtml = product.Description;
 
                 TagBuilder div = new TagBuilder("div");

@@ -16,8 +16,7 @@ namespace Domain.Entities
         public string Name { get; set; }
 
         public string Abbreviation { get; set; }
-       
-
+       
 
     }
 }

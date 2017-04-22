@@ -18,15 +18,12 @@ namespace Domain.Concrete
             get { return context.Products; }
         }
 
-        public void SaveProduct(Product product)
+        public void SaveProduct(Product product, Price price)
         {
             if (product.ProductID == 0)
             {
                 context.Products.Add(product);
-                Price p = new Price();
-                p.PriceUsed = product.PriceUsed;
-                p.PriceNew = product.PriceNew;
-                context.Prices.Add(p);
+                context.Prices.Add(price);
 
             }
             else
@@ -37,7 +34,7 @@ namespace Domain.Concrete
                 {
                     dbEntry.Title = product.Title;
                     dbEntry.Description = product.Description;
-                    dbEntry.UPC = product.UPC;
+                    dbEntry.Price = product.Price;
                     dbEntry.Platform = product.Platform;
                     dbEntry.ImageData = product.ImageData;
                     dbEntry.ImageMimeType = product.ImageMimeType;
@@ -46,8 +43,8 @@ namespace Domain.Concrete
                 Price dbPrice = context.Prices.Find(product.ProductID);
                 if (dbPrice != null)
                 {
-                    dbPrice.PriceUsed = product.PriceUsed;
-                    dbPrice.PriceNew = product.PriceNew;
+                    dbPrice.PriceUsed = price.PriceUsed;
+                    dbPrice.PriceNew = price.PriceNew;
                 }
 
             }

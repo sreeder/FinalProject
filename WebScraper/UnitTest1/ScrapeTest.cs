@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
 using Scraper;
-using Domain.Entities;
 
 namespace UnitTest
 {
@@ -29,10 +28,11 @@ namespace UnitTest
                 
                 PlatformID = 1,
                 Platform = Platforms[1],
-                
-                PriceNew = 5.99M,
-                PriceUsed = 3.99M
-                
+                Price = new Price
+                {
+                    PriceNew = 5.99M,
+                    PriceUsed = 3.99M
+                }
             },
 
             new Product
@@ -43,10 +43,11 @@ namespace UnitTest
                 
                 PlatformID = 4,
                 Platform = Platforms[4],
-               
-                PriceNew = 50M,
-                PriceUsed = 29.99M
-                
+                Price = new Price
+                {
+                    PriceNew = 50M,
+                    PriceUsed = 29.99M
+                }
             }
         };
 
