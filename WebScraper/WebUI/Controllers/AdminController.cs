@@ -30,7 +30,7 @@ namespace WebUI.Controllers
             return View(product);
         }
         [HttpPost]
-        public ActionResult Edit(Product product, Price price, HttpPostedFileBase image = null)
+        public ActionResult Edit(Product product, HttpPostedFileBase image = null)
         {
             if (ModelState.IsValid)
             {
@@ -40,8 +40,8 @@ namespace WebUI.Controllers
                     product.ImageData = new byte[image.ContentLength];
                     image.InputStream.Read(product.ImageData, 0, image.ContentLength);
                 }
-
-                repository.SaveProduct(product, price);
+                
+                repository.SaveProduct(product);
                 TempData["message"] = string.Format("{0} has been saved",
                 product.Title);
                 return RedirectToAction("Index");

@@ -31,7 +31,7 @@
                             item.ProductID
                         })
                     </td>
-                    <td class="text-right">@item.Price.ToString("c")</td>
+                    <td class="text-right">@item.PriceUsed.ToString("c")</td>
                     <td class="text-center">
                         @using (Html.BeginForm("Delete", "Admin"))
                         {
