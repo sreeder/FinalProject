@@ -5,10 +5,90 @@
     ViewBag.Title = "Products";
 }
 
-@foreach (var p in Model.Products)
+// @foreach (var p in Model.Products)
 {
-    @Html.Partial("ProductSummary", p)
+  //  @Html.Partial("ProductSummary", p)
 }
+
+<form action="" class="form-horizontal">
+    <div class="form-group">
+        <label for="searchbar" class="col-sm-2 control-label" style="font-size: 20px;">SEARCH:</label>
+        <div class="col-sm-4">
+            <input id="searchbar" class="typeahead form-control" type="text" value="" style="font-size: 20px;" />
+        </div>
+    </div>
+</form>
+
+@Html.Hidden("category", Model.CurrentCategory)
+@Html.Hidden("page", Model.PagingInfo.CurrentPage)
+
+<div id="productGridContainer">
+    @Html.Partial("ProductGrid", Model)
+</div>
+
+<script>
+    // SEARCH FUNCTIONALITY //
+
+    var searchInProgress = false;
+
+    $(document).ready(function () {
+        $.each($("#categories").children(), function (_, cat) {
+            $(cat).click(function (e) {
+                e.preventDefault();
+                $("#category").val($(cat).html());
+                reloadProductGrid();
+            });
+        });
+
+        var searchbar = $("#searchbar");
+        searchbar.keyup(function () {
+            reloadProductGrid();
+        });
+    });
+
+    function reloadProductGrid() {
+        var cat = $("#category");
+        $("#productGridContainer").load("@Url.Action("ProductGrid")"
+            + "?query=" + $("#searchbar").val()
+            + "&category=" + (cat.val() == "Home" ? "" : cat.val())
+            + "&page=" + $("#page").val()
+        );
+    }
+
+    // TYPEAHEAD FUNCTIONALITY //
+    // Sourced and adapted from: http://twitter.github.io/typeahead.js/examples/
+    var substringMatcher = function (strs) {
+        return function findMatches(q, cb) {
+            var matches, substringRegex;
+
+            // an array that will be populated with substring matches
+            matches = [];
+            // regex used to determine if a string contains the substring `q`
+            substrRegex = new RegExp(q, 'i');
+
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(strs, function (i, str) {
+                if (substrRegex.test(str)) {
+                    matches.push(str);
+                }
+            });
+            cb(matches);
+        };
+    };
+    var products = JSON.parse('@Html.Raw(Model.JsonProducts)');
+
+    $('#searchbar.typeahead').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    },
+    {
+        name: 'products',
+        source: substringMatcher(products)
+    });
+
+</script>
 
 
 @*@Html.PagedProductGrid(Model.PagingInfo, Model.Products)*@
