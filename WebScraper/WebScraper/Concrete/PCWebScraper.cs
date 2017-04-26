@@ -25,15 +25,17 @@ namespace Scraper
 
                 var root = doc.DocumentNode;
 
-                var a_nodes = root.Descendants("a").ToList();
-                var table = root.Descendants("table").ToList();
-                var div_nodes = root.SelectNodes("//*[contains(@class,'price')]");
+                //var a_nodes = root.Descendants("a").ToList();
+                var table = root.Descendants("tr").ToList();//.SelectNodes("//*[contains(@class,'price')]").ToList();
+                //var div_nodes = .SelectNodes("//*[contains(@class,'price')]");
 
-                foreach (var a_node in a_nodes)
+                foreach (var node in table)
                 {
                     Console.WriteLine();
-                    Console.WriteLine("LINK: {0}", a_node.GetAttributeValue("href", ""));
-                    Console.WriteLine("TEXT: {0}", a_node.InnerText.Trim());
+                    Console.WriteLine(node);
+                    //Console.WriteLine("LINK: {0}", node.GetAttributeValue("href", ""));
+                    node.GetAttributeValue("data-source-name", "");
+                    Console.WriteLine("TEXT: {0}", node.InnerText.Trim());
                 }
             }
 
