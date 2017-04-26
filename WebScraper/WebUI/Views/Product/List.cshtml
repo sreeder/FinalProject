@@ -5,10 +5,10 @@
     ViewBag.Title = "Products";
 }
 
-// @foreach (var p in Model.Products)
+ @* foreach (var p in Model.Products)
 {
-  //  @Html.Partial("ProductSummary", p)
-}
+  @Html.Partial("ProductSummary", p)
+} *@
 
 <form action="" class="form-horizontal">
     <div class="form-group">
@@ -23,7 +23,7 @@
 @Html.Hidden("page", Model.PagingInfo.CurrentPage)
 
 <div id="productGridContainer">
-    @Html.Partial("ProductGrid", Model)
+    @Html.Partial("List", Model)
 </div>
 
 
@@ -52,7 +52,7 @@
 
     function reloadProductGrid() {
         var cat = $("#category");
-        $("#productGridContainer").load("@Url.Action("ProductGrid")"
+        $("#productGridContainer").load("@Url.Action("List")"
             + "?query=" + $("#searchbar").val()
             + "&category=" + (cat.val() == "Home" ? "" : cat.val())
             + "&page=" + $("#page").val()

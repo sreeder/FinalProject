@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Domain.Abstract;
 using Domain.Entities;
 using WebUI.Models;
+using Newtonsoft.Json;
 
 namespace WebUI.Controllers
 {
@@ -19,8 +20,10 @@ namespace WebUI.Controllers
             this.repository = productRepository;
         }
 
-        public ViewResult List(string platform, int page = 1)
+        public PartialViewResult List(string query, string platform, int page = 1)
         {
+            //string processedQuery = query.Trim().ToLower();
+
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = repository.Products
@@ -39,7 +42,7 @@ namespace WebUI.Controllers
                 CurrentCategory = platform
             };
 
-            return View(model);
+            return PartialView("List", model);
         }
 
         public FileContentResult GetImage(int productId)
