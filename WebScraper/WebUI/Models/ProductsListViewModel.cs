@@ -20,7 +20,7 @@ namespace WebUI.Models
 
                 var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
 
-                var json = serializer.Serialize(Products.Select(p => p.Name));
+                var json = serializer.Serialize(Products.Select(p => p.Title));
 
                 var decodedJson = HttpUtility.HtmlDecode(json);
 
