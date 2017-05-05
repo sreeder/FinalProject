@@ -19,11 +19,10 @@ namespace WebUI.Controllers
         {
             this.repository = productRepository;
         }
-
-        public PartialViewResult List(string query, string platform, int page = 1)
+  
+        public ViewResult List(string query, string platform, int page = 1)
         {
             //string processedQuery = query.Trim().ToLower();
-
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = repository.Products
@@ -41,8 +40,32 @@ namespace WebUI.Controllers
                 },
                 CurrentCategory = platform
             };
+            return View(model);      
+        }
 
-            return PartialView("List", model);
+        public PartialViewResult ProductGrid(string query, string platform, int page = 1)
+        {
+            string processedQuery = query.Trim().ToLower();
+
+            ProductsListViewModel model = new ProductsListViewModel
+            {
+                Products = repository.Products
+                    .Where(p => String.IsNullOrWhiteSpace(platform) || p.Platform.Name == platform)
+                    .Where(p => p.Platform.Name.ToLower().Contains(processedQuery)
+                        || p.Platform.Name.ToLower().Contains(processedQuery)
+                        || p.Description.ToLower().Contains(processedQuery))
+                    .OrderBy(p => p.ProductID),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,                
+                    ItemsPerPage = PageSize,
+                    TotalItems = platform == null ?
+                        repository.Products.Count() :
+                        repository.Products.Where(e => e.Platform.Name == platform).Count()
+                },
+                CurrentCategory = platform
+            };
+            return PartialView("ProductGrid", model);
         }
 
         public FileContentResult GetImage(int productId)
@@ -56,7 +79,6 @@ namespace WebUI.Controllers
             {
                 return null;
             }
-
         }
     }
 } 
