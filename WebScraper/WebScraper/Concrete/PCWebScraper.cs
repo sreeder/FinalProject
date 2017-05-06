@@ -5,45 +5,62 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc.Routing.Constraints;
 using HAP = HtmlAgilityPack;
-//using Scraper.Abstract;
-using Domain.Entities;
 
 namespace Scraper
 {
     public class PCWebScraper
     {
-        public Dictionary<string, decimal> GetPrices(Product product)
+        public Dictionary<string, decimal> GetPrices(String upc)
         {
 
             Dictionary<string, decimal> values = new Dictionary<string, decimal>();
 
-            var url = GetURL(product.UPC);
+            var url = GetURL(upc);
             using (var client = new System.Net.WebClient())
             {
                 var filename = System.IO.Path.GetTempFileName();
-
-                client.DownloadFile(url, filename);
+                try
+                {
+                    client.DownloadFile(url, filename);
+                }
+                catch
+                {
+                    return new Dictionary<string, decimal>();
+                }
+                
 
                 var doc = new HAP.HtmlDocument();
                 doc.Load(filename);
 
                 var table2 = doc.DocumentNode.SelectSingleNode("//div[@id = 'price_comparison']");
-                var certainTd = table2.SelectSingleNode(".//tbody[1]");
-                var certainNodes = certainTd.SelectNodes(".//tr");
+                HAP.HtmlNode certainTbody = null;
+                HAP.HtmlNodeCollection certainNodes = null;
 
+                if (table2 != null)
+                    certainTbody = table2.SelectSingleNode(".//tbody[1]");
 
-                foreach (HAP.HtmlNode row in certainNodes)
+                if (certainTbody != null)
+                    certainNodes = certainTbody.SelectNodes(".//tr");
+
+                if (certainNodes != null)
                 {
-                    var location= row.GetAttributeValue("data-source-name", "");
-                    var col = row.SelectSingleNode("//td[@class ='price']");
-                    
-                    if (col != null)
+                    foreach (HAP.HtmlNode row in certainNodes)
                     {
-                        var val = col.InnerHtml;
-                        var price = Convert.ToDecimal(val.Replace('$', ' ').Trim());
-                        
-                        values.Add(location, price);
+                        var location = row.GetAttributeValue("data-source-name", "");
+                        var col = row.SelectSingleNode("//td[@class ='price']");
+
+                        if (col != null)
+                        {
+                            var val = col.InnerHtml;
+                            var price = Convert.ToDecimal(val.Replace('$', ' ').Trim());
+
+                            values.Add(location, price);
+                        }
                     }
+                }
+                else
+                {
+                    return new Dictionary<string, decimal>();
                 }
 
             }

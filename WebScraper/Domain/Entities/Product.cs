@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Scraper;
 
 namespace Domain.Entities
 {
@@ -26,5 +27,17 @@ namespace Domain.Entities
         public virtual Platform Platform { get; set; }
        
         public virtual Price Price { get; set; }
+
+        public Dictionary<string, decimal> PriceComparison
+        {
+            get
+            {
+                PCWebScraper pc = new PCWebScraper();
+                Dictionary<string, decimal> answer = pc.GetPrices(UPC);
+                return answer;
+
+            }
+        }
+
     }
 }

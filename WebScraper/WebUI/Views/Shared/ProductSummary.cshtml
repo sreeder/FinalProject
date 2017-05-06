@@ -14,12 +14,29 @@
         <strong>@Model.Title</strong>
         <span class="pull-right label label-primary">@Model.Price.PriceUsed.ToString()</span>
     </h3>
+    
+    <!-- Single statement block -->
+    @{ var myMessage = "Hello World"; 
+        foreach (var item in Model.PriceComparison)
+        {
+            myMessage += item.Key + ": " + item.Value + " \t";
+        }
+    }
+
+    <!-- Inline expression or variable -->
+    <p>@myMessage</p> 
+    
+
+
     <form action="/" method="post">
         <div class="pull-right">
             @Html.HiddenFor(x => x.ProductID)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
             @*<input id="cart" class="btn btn-success" value="Add to cart"/>*@
             @*<button id="cart" type="button" onclick ="addToCart(@Model.ProductID.ToString())" class="btn btn-success">Add to cart</button>*@
+            
+       
+        
         </div>        
     </form>
     
