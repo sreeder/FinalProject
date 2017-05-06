@@ -75,7 +75,24 @@ namespace UnitTest
 
             PCWebScraper pc = new PCWebScraper();
             Dictionary<string, decimal> answer = pc.GetPrices(p);
+            Assert.AreEqual(answer.Count, 4);
+
         }
+
+        [TestMethod]
+        public void FindAssassins()
+        {
+            //Mock<Product> mock = new Mock<Product>();
+            //mock.Setup(m => m).Returns(
+            //   Products[0]);
+            Product p = Products[1];
+
+            PCWebScraper pc = new PCWebScraper();
+            Dictionary<string, decimal> answer = pc.GetPrices(p);
+            Assert.AreEqual(answer.Count, 4);
+
+        }
+
     }
 }
 // Testing to see if I can make changes -Shad
