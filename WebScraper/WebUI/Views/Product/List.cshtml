@@ -52,7 +52,7 @@
 
     function reloadProductGrid() {
         var cat = $("#category");
-        $("#productGridContainer").load("@Url.Action("List")"
+        $("#productGridContainer").load("@Url.Action("ProductGrid")"
             + "?query=" + $("#searchbar").val()
             + "&category=" + (cat.val() == "Home" ? "" : cat.val())
             + "&page=" + $("#page").val()
