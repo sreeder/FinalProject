@@ -12,6 +12,11 @@ else
     }
 }
 
-<div class="btn-group pull-right">
+<@*div class="btn-group pull-right">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+</div>*@
+
+<div class="btn-group pull-right">
+    @*@Html.PageLinks(Model.PagingInfo,x=>Url.Action("List", new {page = x, category=Model.CurrentCategory}))*@
+    @Html.Pager(Model.PagingInfo.ItemsPerPage, Model.PagingInfo.CurrentPage, Model.PagingInfo.TotalItems).Options(o => o.MaxNrOfPages(8))
 </div>
