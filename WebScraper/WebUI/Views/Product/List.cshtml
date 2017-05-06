@@ -98,7 +98,8 @@
 @*@Html.PagedProductGrid(Model.PagingInfo, Model.Products)*@
 
 <div class="btn-group pull-right">
-    @Html.PageLinks(Model.PagingInfo,x=>Url.Action("List", new {page = x, category=Model.CurrentCategory}))
+    @*@Html.PageLinks(Model.PagingInfo,x=>Url.Action("List", new {page = x, category=Model.CurrentCategory}))*@
+    @Html.Pager(Model.PagingInfo.ItemsPerPage, Model.PagingInfo.CurrentPage, Model.PagingInfo.TotalItems).Options(o => o.MaxNrOfPages(5))
 </div>
 
 

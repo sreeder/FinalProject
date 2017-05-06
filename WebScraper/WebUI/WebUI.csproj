@@ -91,6 +91,14 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+    </Reference>    
+    <Reference Include="MvcPager, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcPager.1.0.0\lib\MvcPager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvcPaging, Version=2.1.7.35, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcPaging.2.1.7\lib\net40\MvcPaging.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
