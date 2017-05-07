@@ -18,10 +18,7 @@ else
 </div>*@
    
 <div class="btn-group pull-right" id ="pagelinks">
-    @Html.Pager(Model.PagingInfo.ItemsPerPage, Model.PagingInfo.CurrentPage, Model.PagingInfo.TotalItems).Options(o => o.MaxNrOfPages(8).AddRouteValue("platform", Model.CurrentCategory))
+    @Html.Pager(Model.PagingInfo.ItemsPerPage, Model.PagingInfo.CurrentPage, Model.PagingInfo.TotalItems).Options(o => o.MaxNrOfPages(8))
  
 </div>
 
-@*@Html.Pager(pageSize, pageNumber, totalItemCount).Options(o => o
-    .Action("action")
-    .AddRouteValue("q", mySearchQuery)*@

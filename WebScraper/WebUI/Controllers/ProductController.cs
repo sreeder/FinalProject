@@ -48,6 +48,9 @@ namespace WebUI.Controllers
 
         public PartialViewResult ProductGrid(string query, string platform, int page = 1)
         {
+
+            if (query == null)
+                query = "";
             string processedQuery = query.Trim().ToLower();
 
             ProductsListViewModel model = new ProductsListViewModel

@@ -15,15 +15,15 @@
         <span class="pull-right label label-primary">@Model.Price.PriceUsed.ToString()</span>
     </h3>
     
-    <!-- Single statement block -->
+
     @{ var myMessage = ""; 
-        foreach (var item in Model.getPriceComparison())
+        foreach (var item in Model.PriceComparison)
         {
             myMessage += item.Key + ": " + item.Value + ", \t";
         }
     }
 
-    <!-- Inline expression or variable -->
+
     <p>@myMessage</p> 
     
 
