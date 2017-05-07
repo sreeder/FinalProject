@@ -18,19 +18,19 @@ namespace WebUI
                 {
                     controller = "Product",
                     action = "List",
-                    category = (string) null,
+                    platform = (string) null,
                     page = 1
                 }
             );
             routes.MapRoute(null,
                 "Page{page}",
-                new {controller = "Product", action = "List", category = (string) null},
+                new {controller = "Product", action = "List", platform = (string) null},
                 new {page = @"\d+"});
             routes.MapRoute(null,
-                "{category}",
+                "{platform}",
                 new {controller = "Product", action = "List", page = 1});
             routes.MapRoute(null,
-                "{category}/Page{page}",
+                "{platform}/Page{page}",
                 new {controller = "Product", action = "List"},
                 new {page = @"\d+"});
             routes.MapRoute(null, "{controller}/{action}");

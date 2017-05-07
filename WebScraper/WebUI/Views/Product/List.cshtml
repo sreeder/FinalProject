@@ -19,7 +19,7 @@
     </div>
 </form>
 
-@Html.Hidden("category", Model.CurrentCategory)
+@Html.Hidden("platform", Model.CurrentCategory)
 @Html.Hidden("page", Model.PagingInfo.CurrentPage)
 
 <div id="productGridContainer">
@@ -36,10 +36,23 @@
     var searchInProgress = false;
 
     $(document).ready(function () {
+        //overwrite category button functionality
         $.each($("#categories").children(), function (_, cat) {
             $(cat).click(function (e) {
                 e.preventDefault();
-                $("#category").val($(cat).html());
+                $("#platform").val($(cat).html());
+                reloadProductGrid();
+            });
+        });
+
+        //overwrite page link  functionality
+        $.each($("#pagelinks").children(), function (_, cat) {
+            $(cat).click(function (e) {
+                e.preventDefault();
+                var str = cat.getAttribute("href");
+                var res = str.replace("/Page", "");
+                
+                $("#page").val(res);
                 reloadProductGrid();
             });
         });
@@ -51,10 +64,10 @@
     });
 
     function reloadProductGrid() {
-        var cat = $("#category");
+        var cat = $("#platform");
         $("#productGridContainer").load("@Url.Action("ProductGrid")"
             + "?query=" + $("#searchbar").val()
-            + "&category=" + (cat.val() == "Home" ? "" : cat.val())
+            + "&platform=" + (cat.val() == "Home" ? "" : cat.val())
             + "&page=" + $("#page").val()
         );
     }

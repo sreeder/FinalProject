@@ -1,7 +1,19 @@
 ﻿
 @model Domain.Entities.Product
 @{
-    ViewBag.Title = "Admin: Edit " + @Model.Title;
+    
+    var myTitle = "";
+
+    if (!String.IsNullOrEmpty(Model.Title))
+    {
+        myTitle += Model.Title;
+    }
+    else
+    {
+        myTitle += "Product";
+    }
+          
+    ViewBag.Title = "Admin: Edit " + myTitle;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     HtmlHelper.ClientValidationEnabled = false;
     HtmlHelper.UnobtrusiveJavaScriptEnabled = false;

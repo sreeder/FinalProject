@@ -16,9 +16,9 @@ namespace WebUI.Controllers
         {
             repository = repo;
         }
-        public PartialViewResult Menu(string category = null)
+        public PartialViewResult Menu(string platform = null)
         {
-            ViewBag.SelectedCategory = category;
+            ViewBag.SelectedCategory = platform;
             IEnumerable<string> categories=repository.Products
                                                 .Select(x=>x.Platform.Name)
                                                 .Distinct()

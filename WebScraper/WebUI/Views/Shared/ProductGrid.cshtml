@@ -17,8 +17,8 @@ else
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
 </div>*@
    
-<div class="btn-group pull-right">
-    @Html.Pager(Model.PagingInfo.ItemsPerPage, Model.PagingInfo.CurrentPage, Model.PagingInfo.TotalItems).Options(o => o.MaxNrOfPages(8).AddRouteValue("category", Model.CurrentCategory))
+<div class="btn-group pull-right" id ="pagelinks">
+    @Html.Pager(Model.PagingInfo.ItemsPerPage, Model.PagingInfo.CurrentPage, Model.PagingInfo.TotalItems).Options(o => o.MaxNrOfPages(8).AddRouteValue("platform", Model.CurrentCategory))
  
 </div>
 

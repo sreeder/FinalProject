@@ -55,8 +55,9 @@ namespace WebUI.Controllers
                 Products = repository.Products
                     .Where(p => String.IsNullOrWhiteSpace(platform) || p.Platform.Name == platform)
                     .Where(p => p.Platform.Name.ToLower().Contains(processedQuery)
-                        || p.Platform.Name.ToLower().Contains(processedQuery)
-                        || p.Description.ToLower().Contains(processedQuery))
+                        || p.Title.ToLower().Contains(processedQuery)
+                        || p.Description.ToLower().Contains(processedQuery)
+                        || p.UPC.ToLower().Contains(processedQuery))
                     .OrderBy(p => p.ProductID),
                 PagingInfo = new PagingInfo
                 {

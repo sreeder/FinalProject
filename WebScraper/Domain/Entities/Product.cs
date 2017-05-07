@@ -13,19 +13,23 @@ namespace Domain.Entities
     {
         [HiddenInput(DisplayValue = false)]
         public int ProductID { get; set; }
-        [Required(ErrorMessage = "Please enter a product name")]
+        [Required(ErrorMessage = "Please enter a product Title")]
         public string Title { get; set; }
         public string TitleSearch { get; set; }
-        [DataType(DataType.MultilineText)]
-        [Required(ErrorMessage = "Please enter a description")]
         public string UPC { get; set; }
+        [DataType(DataType.MultilineText)]
+        [Required(ErrorMessage = "Please enter a Description")]
         public string Description { get; set; }      
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }
+        [HiddenInput(DisplayValue = false)]
+        //[Required]
         public int PlatformID { get; set; }
-  
+
+        [Required(ErrorMessage = "Please select a Platform")]
         public virtual Platform Platform { get; set; }
-       
+
+        [Required]
         public virtual Price Price { get; set; }
 
         public Dictionary<string, decimal> PriceComparison

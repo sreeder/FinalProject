@@ -52,7 +52,12 @@ namespace Scraper
                         if (col != null)
                         {
                             var val = col.InnerHtml;
-                            var price = Convert.ToDecimal(val.Replace('$', ' ').Trim());
+                            var cost = val.Replace('$', ' ').Trim();
+                            Decimal price = 0.0m;
+                            if (!String.IsNullOrEmpty(cost))
+                            {
+                                price = Convert.ToDecimal(val.Replace('$', ' ').Trim());
+                            }
 
                             values.Add(location, price);
                         }
