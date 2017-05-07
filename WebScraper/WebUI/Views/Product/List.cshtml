@@ -67,7 +67,7 @@
         var cat = $("#platform");
         $("#productGridContainer").load("@Url.Action("ProductGrid")"
             + "?query=" + $("#searchbar").val()
-            + "&platform=" + (cat.val() == "Home" ? "" : cat.val())
+            + "&platform=" + (cat.val() == "Home" ? "" : cat.val().replace(' ','%20' ))
             + "&page=" + $("#page").val()
         );
     }

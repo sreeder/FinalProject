@@ -17,7 +17,7 @@
     
     <!-- Single statement block -->
     @{ var myMessage = ""; 
-        foreach (var item in Model.PriceComparison)
+        foreach (var item in Model.getPriceComparison())
         {
             myMessage += item.Key + ": " + item.Value + ", \t";
         }

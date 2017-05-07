@@ -32,15 +32,14 @@ namespace Domain.Entities
         [Required]
         public virtual Price Price { get; set; }
 
-        public Dictionary<string, decimal> PriceComparison
+        public Dictionary<string, decimal> getPriceComparison()
         {
-            get
-            {
-                PCWebScraper pc = new PCWebScraper();
-                Dictionary<string, decimal> answer = pc.GetPrices(UPC);
-                return answer;
+            
+            PCWebScraper pc = new PCWebScraper();
+            Dictionary<string, decimal> answer = pc.GetPrices(UPC);
+            return answer;
 
-            }
+            
         }
 
     }
