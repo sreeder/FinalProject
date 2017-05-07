@@ -1,12 +1,7 @@
 ﻿@model IEnumerable<Domain.Entities.Product>
 @{
     ViewBag.Title = "Admin: All Products";
-
-
-    
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-
-
 
 }
 <div class="panel panel-default">
@@ -31,7 +26,7 @@
                             item.ProductID
                         })
                     </td>
-                    <td class="text-right">@item.Price.ToString("c")</td>
+                    <td class="text-right">@item.Price.PriceNew.ToString("c")</td>
                     <td class="text-center">
                         @using (Html.BeginForm("Delete", "Admin"))
                         {

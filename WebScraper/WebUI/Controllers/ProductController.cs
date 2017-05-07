@@ -16,7 +16,7 @@ namespace WebUI.Controllers
     public class ProductController : Controller
     {
         private IProductRepository repository;
-        public int PageSize = 7;
+        public int PageSize = 15;
         // GET: Product
         public ProductController(IProductRepository productRepository)
         {
